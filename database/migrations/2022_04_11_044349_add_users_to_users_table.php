@@ -13,13 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('brands', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('image')->nullable();
-            $table->string('image_path')->nullable();
-            $table->timestamps();
-        });
+        DB::table('users')->insert(
+            array(
+                'name' => 'Lukana',
+                'email' => 'lukanasoft@gmail.com',
+                'password' => bcrypt('lukanasoft'),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+                'role_id' => 1,
+            )
+        );
     }
 
     /**
@@ -29,6 +32,5 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brands');
     }
 };

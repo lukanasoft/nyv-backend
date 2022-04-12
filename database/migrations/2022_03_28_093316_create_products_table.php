@@ -20,13 +20,14 @@ return new class extends Migration
             $table->string('description');
             $table->string('aplication');
             $table->integer('importance')->default(0);
-            
+
             //brand foreign key
             $table->unsignedBigInteger('brand_id');
-            $table->foreign('brand_id')->references('id')->on('brands');
+            //on delete cascade
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
             //category foreign key
             $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             //user foreign key
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
