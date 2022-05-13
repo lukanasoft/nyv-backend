@@ -29,6 +29,10 @@ class ProductController extends Controller
     public function getProduct($id)
     {
         $product = Product::find($id);
+        $product->photos;
+        $product->brand;
+        $product->category;
+        // return product with photos, brand, category
         return response()->json($product);
     }
 
